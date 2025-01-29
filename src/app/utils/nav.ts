@@ -21,13 +21,13 @@ export const navigation = {
             parentNav: 'tools',
             description: 'SCA Arabica Flavour Wheel'
         },
-        {
-            name: 'SCA Cupping Sheet',
-            href: '/coffee-tools/cupping-tool',
-            activeSegment: '/coffee-tools/cupping-tool',
-            parentNav: 'tools',
-            description: 'based on the new SCA Cupping Sheet'
-        },
+        // {
+        //     name: 'SCA Cupping Sheet',
+        //     href: '/coffee-tools/cupping-tool',
+        //     activeSegment: '/coffee-tools/cupping-tool',
+        //     parentNav: 'tools',
+        //     description: 'based on the new SCA Cupping Sheet'
+        // },
     ],
     tools: [
         {
@@ -37,13 +37,12 @@ export const navigation = {
             parentNav: 'tools',
             description: 'Generates different types of QR Codes'
         },
-        {
-            name: 'Digital Wishlist',
-            href: '/tools/digital-wishlist',
-            activeSegment: '/tools/digital-wishlist',
-            parentNav: 'tools',
-            description: 'Wishlist to share to family & friends'
-
-        }
+        // {
+        //     name: 'Digital Wishlist',
+        //     href: '/tools/digital-wishlist',
+        //     activeSegment: '/tools/digital-wishlist',
+        //     parentNav: 'tools',
+        //     description: 'Wishlist to share to family & friends'
+        // }
 ]
 }
