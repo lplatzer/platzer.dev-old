@@ -7,24 +7,16 @@
 // import {Disclosure, DisclosureButton, DisclosurePanel, Popover, PopoverGroup, PopoverButton, PopoverPanel} from "@headlessui/react";
 // import {ChevronDownIcon} from "@heroicons/react/16/solid";
 
-import { Fragment, useState } from 'react'
 import * as React from 'react';
 import {
     CloseButton,
-    Dialog,
-    DialogBackdrop,
-    DialogPanel,
     Popover,
     PopoverButton,
     PopoverGroup,
     PopoverPanel,
-    Tab,
-    TabGroup,
-    TabList,
-    TabPanel,
-    TabPanels,
+
 } from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon } from '@heroicons/react/24/outline'
 import {navigation as newNav } from "@/app/utils/nav";
 import Link from "next/link";
 import {VscGithubInverted} from "react-icons/vsc";
@@ -32,7 +24,7 @@ import {ChevronDownIcon} from "@heroicons/react/16/solid";
 import {usePathname} from "next/navigation";
 
 export default function Navigation() {
-    const [open, setOpen] = React.useState(false);
+    const [/*open*/, setOpen] = React.useState(false);
     const activeSegment = usePathname();
     console.log(activeSegment);
     return (
@@ -51,16 +43,16 @@ export default function Navigation() {
                         </button>
 
                         {/* Logo */}
-                        <div className="ml-4 flex lg:ml-0">
-                            <a href="/">
-                                <span className="sr-only">Your Company</span>
-                                <img
-                                    alt=""
-                                    src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                                    className="h-8 w-auto"
-                                />
-                            </a>
-                        </div>
+                        {/*<div className="ml-4 flex lg:ml-0">*/}
+                        {/*    <a href="/">*/}
+                        {/*        <span className="sr-only">Your Company</span>*/}
+                        {/*        <img*/}
+                        {/*            alt=""*/}
+                        {/*            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"*/}
+                        {/*            className="h-8 w-auto"*/}
+                        {/*        />*/}
+                        {/*    </a>*/}
+                        {/*</div>*/}
 
                         {/* Flyout menus */}
                         <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">

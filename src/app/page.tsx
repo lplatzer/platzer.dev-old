@@ -7,7 +7,7 @@ export default function Home() {
           <div className="grid grid-col-2 grid-flow-col gap-4">
               <div className="">
                   <h2 className="text-3xl mb-3">Hi. My name is Luis Platzer.</h2>
-                  <p className={"max-w-xl"}>I'm a software developer, former professional barista, coffee roaster and general coffee nerd.
+                  <p className={"max-w-xl"}>I&apos;m a software developer, former professional barista, coffee roaster and general coffee nerd.
                       <br/>
                       I aim to connect the world of software development with the world of coffee by developing tools that will help you enjoy and improve every cup of coffee.
                   </p>
