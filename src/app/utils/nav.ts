@@ -7,11 +7,11 @@ export const navigation = {
             href: '/',
             activeSegment: '/'
         },
-        {
-            name: 'Contact',
-            href: '/contact',
-            activeSegment: '/contact'
-        },
+        // {
+        //     name: 'Contact',
+        //     href: '/contact',
+        //     activeSegment: '/contact'
+        // },
     ],
     coffeeTools: [
         {
