@@ -5,9 +5,15 @@
 Your WorkOS environment variables are correctly configured:
 
 ```bash
+<<<<<<< HEAD
 ✅ WORKOS_CLIENT_ID:
 ✅ WORKOS_API_KEY:
 ✅ WORKOS_COOKIE_PASSWORD:
+=======
+✅ WORKOS_CLIENT_ID: client_01K7BXJHEC2QJCMJF9F8ESWTHJ
+✅ WORKOS_API_KEY: Set (100 characters)
+✅ WORKOS_COOKIE_PASSWORD: Set (64 characters)
+>>>>>>> fb3355e (removed secrets)
 ✅ WORKOS_REDIRECT_URI: http://localhost:3000/callback
 ```
 
@@ -175,7 +181,7 @@ The API key starts with `sk_test_` which means it's a staging key.
 **Decode the base64:**
 
 ```bash
-echo "c3RhZ2luZ18wMUs3QlhKSEdBQTRXUFYyVkhHTTZGVDBOMV9QOWRaQVJVc1daaU14WDRnQmRCb25DRWR6azg5aWF6aw==" | base64 -d
+echo "==" | base64 -d
 ```
 
 Output should show: `staging_01K7BXJHGAA4WPV2VHGM6FT0N1_...`

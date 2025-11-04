@@ -266,11 +266,19 @@ When creating `.env.local` for the ETF API, the file was accidentally **overwrit
    # External API Keys
    EODHD_API_KEY=
    ALPHA_VANTAGE_API_KEY=
+<<<<<<< HEAD
    JWT_SECRET=
 
    # Database
    DATABASE_USER=
    DATABASE_PASSWORD=
+=======
+   JWT_SECRET="
+
+   # Database
+   DATABASE_USER="platzer-dev-web"
+   DATABASE_PASSWORD="
+>>>>>>> fb3355e (removed secrets)
 
    # ETF API Configuration
    NEXT_PUBLIC_ETF_API_URL=http://localhost:8000
