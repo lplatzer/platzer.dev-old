@@ -18,6 +18,10 @@ const config: Config = {
     '**/__tests__/**/*.{ts,tsx}',
     '**/*.{spec,test}.{ts,tsx}',
   ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/tests-for-branches/', // These tests are for feature branches only
+  ],
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!src/**/*.d.ts',
