@@ -9,6 +9,7 @@ import {
   ShoppingBagIcon
 } from '@heroicons/react/24/outline';
 import { CheckCircleIcon as CheckCircleSolidIcon } from '@heroicons/react/24/solid';
+import { Button } from '@/components/ui/button';
 
 interface WishlistItem {
   id: string;
@@ -122,12 +123,12 @@ export default function DigitalWishlistPage() {
           <div className="rounded-md bg-red-50 p-4">
             <p className="text-sm text-red-800">{error}</p>
           </div>
-          <button
+          <Button
             onClick={fetchWishlistItems}
-            className="mt-4 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="mt-4"
           >
             Try Again
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -145,13 +146,12 @@ export default function DigitalWishlistPage() {
               Get started by adding your first item to your wishlist.
             </p>
             <div className="mt-6">
-              <Link
-                href="/tools/digital-wishlist/edit"
-                className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                <PlusIcon className="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" />
-                Add Item
-              </Link>
+              <Button asChild>
+                <Link href="/tools/digital-wishlist/edit">
+                  <PlusIcon className="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" />
+                  Add Item
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -175,9 +175,9 @@ export default function DigitalWishlistPage() {
           {items.map((item) => (
             <div
               key={item.id}
-              className={`relative flex flex-col overflow-hidden rounded-lg bg-white shadow transition-all duration-200 hover:shadow-lg ${
-                item.isGifted ? 'ring-2 ring-green-500' : ''
-              }`}
+              className={`group relative flex flex-col overflow-hidden rounded-lg bg-white shadow transition-all duration-200 ${
+                item.productUrl ? 'cursor-pointer hover:shadow-xl' : 'hover:shadow-lg'
+              } ${item.isGifted ? 'ring-2 ring-green-500' : ''}`}
             >
               {/* Gifted badge */}
               {item.isGifted && (
@@ -189,13 +189,26 @@ export default function DigitalWishlistPage() {
                 </div>
               )}
 
+              {/* Clickable card area linking to product */}
+              {item.productUrl && (
+                <Link
+                  href={item.productUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 z-0"
+                  aria-label={`View ${item.title}`}
+                >
+                  <span className="sr-only">View product</span>
+                </Link>
+              )}
+
               {/* Image */}
-              <div className={`aspect-w-16 aspect-h-9 w-full bg-gray-200 ${item.isGifted ? 'opacity-60' : ''}`}>
+              <div className={`aspect-w-16 aspect-h-9 w-full bg-gray-200 overflow-hidden ${item.isGifted ? 'opacity-60' : ''}`}>
                 {item.imageUrl ? (
                   <img
                     src={item.imageUrl}
                     alt={item.title}
-                    className="h-48 w-full object-cover object-center"
+                    className="h-48 w-full object-cover object-center transition-transform duration-200 group-hover:scale-105"
                   />
                 ) : (
                   <div className="flex h-48 items-center justify-center bg-gray-100">
@@ -206,7 +219,7 @@ export default function DigitalWishlistPage() {
 
               {/* Content */}
               <div className={`flex flex-1 flex-col p-4 ${item.isGifted ? 'opacity-75' : ''}`}>
-                <h3 className="text-lg font-bold text-gray-900 line-clamp-2">
+                <h3 className="text-lg font-bold text-gray-900 line-clamp-2 group-hover:text-indigo-600 transition-colors">
                   {item.title}
                 </h3>
 
@@ -217,7 +230,7 @@ export default function DigitalWishlistPage() {
                 )}
 
                 {/* Links section */}
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2 relative z-10">
                   {item.productUrl && (
                     <a
                       href={item.productUrl}
@@ -254,23 +267,20 @@ export default function DigitalWishlistPage() {
                 </div>
 
                 {/* Mark as Gifted toggle */}
-                <div className="mt-4 pt-4 border-t border-gray-200">
-                  <button
+                <div className="mt-4 pt-4 border-t border-gray-200 relative z-10">
+                  <Button
                     onClick={() => handleToggleGifted(item.id, item.isGifted)}
                     disabled={updatingItems.has(item.id)}
-                    className={`flex w-full items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-semibold shadow-sm transition-colors ${
-                      item.isGifted
-                        ? 'bg-green-600 text-white hover:bg-green-500'
-                        : 'bg-white text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
-                    } disabled:opacity-50 disabled:cursor-not-allowed`}
+                    variant={item.isGifted ? "default" : "outline"}
+                    className={`w-full ${item.isGifted ? 'bg-green-600 hover:bg-green-500' : ''}`}
                   >
                     {updatingItems.has(item.id) ? (
-                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"></div>
+                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent mr-2"></div>
                     ) : (
-                      <CheckCircleIcon className="h-5 w-5" />
+                      <CheckCircleIcon className="h-5 w-5 mr-2" />
                     )}
                     {item.isGifted ? 'Mark as Not Gifted' : 'Mark as Gifted'}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -279,13 +289,16 @@ export default function DigitalWishlistPage() {
       </div>
 
       {/* Floating Action Button */}
-      <Link
-        href="/tools/digital-wishlist/edit"
-        className="fixed bottom-8 right-8 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition-all hover:scale-110"
+      <Button
+        asChild
+        size="icon"
+        className="fixed bottom-8 right-8 h-14 w-14 rounded-full shadow-lg transition-all hover:scale-110"
       >
-        <PlusIcon className="h-6 w-6" aria-hidden="true" />
-        <span className="sr-only">Add new item</span>
-      </Link>
+        <Link href="/tools/digital-wishlist/edit">
+          <PlusIcon className="h-6 w-6" aria-hidden="true" />
+          <span className="sr-only">Add new item</span>
+        </Link>
+      </Button>
     </div>
   );
 }
