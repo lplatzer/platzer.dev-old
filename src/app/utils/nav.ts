@@ -7,11 +7,16 @@ export const navigation = {
             href: '/',
             activeSegment: '/'
         },
-        // {
-        //     name: 'Contact',
-        //     href: '/contact',
-        //     activeSegment: '/contact'
-        // },
+        {
+            name: 'ETF Tracker',
+            href: '/etf-tracker',
+            activeSegment: '/etf-tracker'
+        },
+        {
+            name: 'Docs',
+            href: '/docs',
+            activeSegment: '/docs'
+        }
     ],
     coffeeTools: [
         {

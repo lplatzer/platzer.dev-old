@@ -99,22 +99,22 @@ export default function QrCodeGenerator() {
                                 </ListboxButton>
                                 <ListboxOptions
                                     transition
-                                    className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
+                                    className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden data-closed:data-leave:opacity-0 data-leave:transition data-leave:duration-100 data-leave:ease-in sm:text-sm"
                                 >
                                     {wifiEncryption.map((encryption) => (
                                         <ListboxOption
                                             key={encryption.encryption}
                                             value={encryption}
-                                            className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white data-[focus]:outline-none"
+                                            className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-focus:bg-indigo-600 data-focus:text-white data-focus:outline-hidden"
                                         >
                                             <div className="flex items-center">
                                                 <span
-                                                    className="ml-3 block truncate font-normal group-data-[selected]:font-semibold">
+                                                    className="ml-3 block truncate font-normal group-data-selected:font-semibold">
                                                     {encryption.encryption}
                                                 </span>
                                             </div>
                                             <span
-                                                className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-[&:not([data-selected])]:hidden group-data-[focus]:text-white">
+                                                className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-[&:not([data-selected])]:hidden group-data-focus:text-white">
                                                 <CheckIcon aria-hidden="true" className="size-5"/>
                                             </span>
                                         </ListboxOption>
@@ -133,7 +133,7 @@ export default function QrCodeGenerator() {
                                     aria-describedby="hidden wifi ssid"
                                     checked={formData.wifiIsHidden}
                                     onChange={handleChange}
-                                    className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
+                                    className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
                                 />
                             </div>
                         </div>

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navigation from "@/app/components/navigation";
+import Navigation from "@/components/navigation";
+import {AuthKitProvider} from "@workos-inc/authkit-nextjs/components";
+import {NavigationMenu} from "@/components/ui/navigation-menu";
+import NavMenu from "@/components/NavMenu";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,12 +33,15 @@ export default function RootLayout({
     <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-    <Navigation/>
-    <main>
+    <AuthKitProvider>
+      <Navigation/>
+      <main>
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            {children}
+          {children}
         </div>
-    </main>
+      </main>
+    </AuthKitProvider>
+
     </body>
     </html>
   );
