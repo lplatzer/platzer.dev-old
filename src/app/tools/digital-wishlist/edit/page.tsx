@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Button, Field, Input, Label, Textarea } from "@headlessui/react";
+import { useAuth } from "@workos-inc/authkit-nextjs/components";
 import { WishlistItem } from "@/app/types/wishlist";
 
 interface FormData {
@@ -28,6 +30,9 @@ interface FormErrors {
 }
 
 function EditWishlistItemContent() {
+    // Authentication check - ensures user is signed in
+    const { user, loading: authLoading } = useAuth({ ensureSignedIn: true });
+
     const router = useRouter();
     const searchParams = useSearchParams();
     const itemId = searchParams.get('id');
@@ -240,10 +245,13 @@ function EditWishlistItemContent() {
         router.push('/tools/digital-wishlist');
     };
 
-    if (isLoading) {
+    // Show loading state while authenticating or loading item data
+    if (authLoading || isLoading) {
         return (
             <div className="flex justify-center items-center min-h-[400px]">
-                <div className="text-lg text-gray-600">Loading...</div>
+                <div className="text-lg text-gray-600">
+                    {authLoading ? 'Checking authentication...' : 'Loading...'}
+                </div>
             </div>
         );
     }
@@ -259,6 +267,11 @@ function EditWishlistItemContent() {
                         ? 'Update the details of your wishlist item below.'
                         : 'Fill in the details to add a new item to your wishlist.'}
                 </p>
+                {user && (
+                    <p className="mt-2 text-xs text-gray-500">
+                        Editing as: {user.email}
+                    </p>
+                )}
             </div>
 
             {submitError && (
