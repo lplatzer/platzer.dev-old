@@ -3,6 +3,10 @@
 import * as React from "react";
 import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Button, Field, Input, Label, Textarea } from "@headlessui/react";
 import { useAuth } from "@workos-inc/authkit-nextjs/components";
 import { WishlistItem } from "@/app/types/wishlist";
@@ -286,8 +290,8 @@ function EditWishlistItemContent() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Title */}
-                <Field>
-                    <Label htmlFor="title" className="block text-sm font-medium text-gray-900">
+                <div className="space-y-2">
+                    <Label htmlFor="title">
                         Title <span className="text-red-500">*</span>
                     </Label>
                     <Input
@@ -297,20 +301,16 @@ function EditWishlistItemContent() {
                         value={formData.title}
                         onChange={handleChange}
                         placeholder="e.g., Wireless Headphones"
-                        className={`mt-2 block w-full rounded-md py-2 px-3 text-base text-gray-900 placeholder:text-gray-400 outline outline-1 -outline-offset-1 ${
-                            errors.title
-                                ? 'outline-red-500 focus:outline-red-600'
-                                : 'outline-gray-300 focus:outline-indigo-600'
-                        } focus:outline focus:outline-2 focus:-outline-offset-2`}
+                        className={errors.title ? 'border-red-500' : ''}
                     />
                     {errors.title && (
-                        <p className="mt-2 text-sm text-red-600">{errors.title}</p>
+                        <p className="text-sm text-red-600">{errors.title}</p>
                     )}
-                </Field>
+                </div>
 
                 {/* Description */}
-                <Field>
-                    <Label htmlFor="description" className="block text-sm font-medium text-gray-900">
+                <div className="space-y-2">
+                    <Label htmlFor="description">
                         Description <span className="text-red-500">*</span>
                     </Label>
                     <Textarea
@@ -320,20 +320,16 @@ function EditWishlistItemContent() {
                         onChange={handleChange}
                         rows={4}
                         placeholder="Describe the item, why you want it, or any specific details..."
-                        className={`mt-2 block w-full rounded-md py-2 px-3 text-base text-gray-900 placeholder:text-gray-400 outline outline-1 -outline-offset-1 ${
-                            errors.description
-                                ? 'outline-red-500 focus:outline-red-600'
-                                : 'outline-gray-300 focus:outline-indigo-600'
-                        } focus:outline focus:outline-2 focus:-outline-offset-2`}
+                        className={errors.description ? 'border-red-500' : ''}
                     />
                     {errors.description && (
-                        <p className="mt-2 text-sm text-red-600">{errors.description}</p>
+                        <p className="text-sm text-red-600">{errors.description}</p>
                     )}
-                </Field>
+                </div>
 
                 {/* Product URL */}
-                <Field>
-                    <Label htmlFor="productUrl" className="block text-sm font-medium text-gray-900">
+                <div className="space-y-2">
+                    <Label htmlFor="productUrl">
                         Product URL <span className="text-red-500">*</span>
                     </Label>
                     <Input
@@ -343,20 +339,16 @@ function EditWishlistItemContent() {
                         value={formData.productUrl}
                         onChange={handleChange}
                         placeholder="https://example.com/product"
-                        className={`mt-2 block w-full rounded-md py-2 px-3 text-base text-gray-900 placeholder:text-gray-400 outline outline-1 -outline-offset-1 ${
-                            errors.productUrl
-                                ? 'outline-red-500 focus:outline-red-600'
-                                : 'outline-gray-300 focus:outline-indigo-600'
-                        } focus:outline focus:outline-2 focus:-outline-offset-2`}
+                        className={errors.productUrl ? 'border-red-500' : ''}
                     />
                     {errors.productUrl && (
-                        <p className="mt-2 text-sm text-red-600">{errors.productUrl}</p>
+                        <p className="text-sm text-red-600">{errors.productUrl}</p>
                     )}
-                </Field>
+                </div>
 
                 {/* Geizhals URL */}
-                <Field>
-                    <Label htmlFor="geizhalsUrl" className="block text-sm font-medium text-gray-900">
+                <div className="space-y-2">
+                    <Label htmlFor="geizhalsUrl">
                         Geizhals URL (Optional)
                     </Label>
                     <Input
@@ -366,20 +358,16 @@ function EditWishlistItemContent() {
                         value={formData.geizhalsUrl}
                         onChange={handleChange}
                         placeholder="https://geizhals.de/..."
-                        className={`mt-2 block w-full rounded-md py-2 px-3 text-base text-gray-900 placeholder:text-gray-400 outline outline-1 -outline-offset-1 ${
-                            errors.geizhalsUrl
-                                ? 'outline-red-500 focus:outline-red-600'
-                                : 'outline-gray-300 focus:outline-indigo-600'
-                        } focus:outline focus:outline-2 focus:-outline-offset-2`}
+                        className={errors.geizhalsUrl ? 'border-red-500' : ''}
                     />
                     {errors.geizhalsUrl && (
-                        <p className="mt-2 text-sm text-red-600">{errors.geizhalsUrl}</p>
+                        <p className="text-sm text-red-600">{errors.geizhalsUrl}</p>
                     )}
-                </Field>
+                </div>
 
                 {/* Idealo URL */}
-                <Field>
-                    <Label htmlFor="idealoUrl" className="block text-sm font-medium text-gray-900">
+                <div className="space-y-2">
+                    <Label htmlFor="idealoUrl">
                         Idealo URL (Optional)
                     </Label>
                     <Input
@@ -389,23 +377,19 @@ function EditWishlistItemContent() {
                         value={formData.idealoUrl}
                         onChange={handleChange}
                         placeholder="https://www.idealo.de/..."
-                        className={`mt-2 block w-full rounded-md py-2 px-3 text-base text-gray-900 placeholder:text-gray-400 outline outline-1 -outline-offset-1 ${
-                            errors.idealoUrl
-                                ? 'outline-red-500 focus:outline-red-600'
-                                : 'outline-gray-300 focus:outline-indigo-600'
-                        } focus:outline focus:outline-2 focus:-outline-offset-2`}
+                        className={errors.idealoUrl ? 'border-red-500' : ''}
                     />
                     {errors.idealoUrl && (
-                        <p className="mt-2 text-sm text-red-600">{errors.idealoUrl}</p>
+                        <p className="text-sm text-red-600">{errors.idealoUrl}</p>
                     )}
-                </Field>
+                </div>
 
                 {/* Image URL */}
-                <Field>
-                    <Label htmlFor="imageUrl" className="block text-sm font-medium text-gray-900">
+                <div className="space-y-2">
+                    <Label htmlFor="imageUrl">
                         Image URL (Optional)
                     </Label>
-                    <div className="mt-2 space-y-2">
+                    <div className="space-y-2">
                         <Input
                             type="url"
                             id="imageUrl"
@@ -413,32 +397,28 @@ function EditWishlistItemContent() {
                             value={formData.imageUrl}
                             onChange={handleChange}
                             placeholder="https://example.com/image.jpg"
-                            className={`block w-full rounded-md py-2 px-3 text-base text-gray-900 placeholder:text-gray-400 outline outline-1 -outline-offset-1 ${
-                                errors.imageUrl
-                                    ? 'outline-red-500 focus:outline-red-600'
-                                    : 'outline-gray-300 focus:outline-indigo-600'
-                            } focus:outline focus:outline-2 focus:-outline-offset-2`}
+                            className={errors.imageUrl ? 'border-red-500' : ''}
                         />
                         <Button
                             type="button"
                             onClick={handleAutoFetchImage}
                             disabled={isFetchingImage || !formData.productUrl}
-                            className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                            variant="outline"
                         >
                             {isFetchingImage ? 'Fetching...' : 'Auto-fetch image from product page'}
                         </Button>
                     </div>
                     {errors.imageUrl && (
-                        <p className="mt-2 text-sm text-red-600">{errors.imageUrl}</p>
+                        <p className="text-sm text-red-600">{errors.imageUrl}</p>
                     )}
-                </Field>
+                </div>
 
                 {/* Image Preview */}
                 {formData.imageUrl && (
                     <div className="mt-4">
-                        <Label className="block text-sm font-medium text-gray-900 mb-2">
+                        <p className="block text-sm font-medium text-gray-900 mb-2">
                             Image Preview
-                        </Label>
+                        </p>
                         <div className="border border-gray-300 rounded-md p-4 bg-gray-50">
                             <img
                                 src={formData.imageUrl}
@@ -459,9 +439,9 @@ function EditWishlistItemContent() {
 
                 {!formData.imageUrl && (
                     <div className="mt-4">
-                        <Label className="block text-sm font-medium text-gray-900 mb-2">
+                        <p className="block text-sm font-medium text-gray-900 mb-2">
                             Image Preview
-                        </Label>
+                        </p>
                         <div className="border border-gray-300 rounded-md p-8 bg-gray-50 text-center">
                             <svg
                                 className="mx-auto h-12 w-12 text-gray-400"
@@ -487,7 +467,7 @@ function EditWishlistItemContent() {
                     <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex-1 bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                        className="flex-1"
                     >
                         {isSubmitting ? 'Saving...' : isEditing ? 'Update Item' : 'Add Item'}
                     </Button>
@@ -495,7 +475,8 @@ function EditWishlistItemContent() {
                         type="button"
                         onClick={handleCancel}
                         disabled={isSubmitting}
-                        className="flex-1 bg-white text-gray-700 py-2 px-4 rounded-md border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                        variant="outline"
+                        className="flex-1"
                     >
                         Cancel
                     </Button>
