@@ -37,12 +37,12 @@ export const navigation = {
             parentNav: 'tools',
             description: 'Generates different types of QR Codes'
         },
-        // {
-        //     name: 'Digital Wishlist',
-        //     href: '/tools/digital-wishlist',
-        //     activeSegment: '/tools/digital-wishlist',
-        //     parentNav: 'tools',
-        //     description: 'Wishlist to share to family & friends'
-        // }
+        {
+            name: 'Digital Wishlist',
+            href: '/tools/digital-wishlist',
+            activeSegment: '/tools/digital-wishlist',
+            parentNav: 'tools',
+            description: 'Wishlist to share with family & friends'
+        }
 ]
 }
